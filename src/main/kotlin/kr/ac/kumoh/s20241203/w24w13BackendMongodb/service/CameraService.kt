@@ -7,12 +7,12 @@ import org.springframework.stereotype.Service
 @Service
 class CameraService(private val repository: CameraRepository) {
 
-    fun addSong(camera: Camera):Camera=repository.save(camera)
-    fun getAllSongs(): List<Camera> = repository.findAll()
-    fun getSongById(id: String): Camera?= repository.findById(id).orElse(null)
-    fun getSongBySinger(model:String): List<Camera> = repository.findByModel(model)
+    fun addCamera(camera: Camera):Camera=repository.save(camera)
+    fun getAllCameras(): List<Camera> = repository.findAll()
+    fun getCameraById(id: String): Camera?= repository.findById(id).orElse(null)
+    fun getCameraBySinger(model:String): List<Camera> = repository.findByModel(model)
 
-    fun updateSong(id: String, camera: Camera): Camera? {
+    fun updateCamera(id: String, camera: Camera): Camera? {
         val songTarget = repository.findById(id)
 
         return if (songTarget.isPresent) {
@@ -29,7 +29,7 @@ class CameraService(private val repository: CameraRepository) {
         }
     }
 
-    fun deleteSong(id: String): Boolean {
+    fun deleteCamera(id: String): Boolean {
         return if (repository.existsById(id)) {
             repository.deleteById(id)
             true
