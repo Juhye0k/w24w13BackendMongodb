@@ -4,10 +4,11 @@ import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 
 @Document(collection = "songs")
-data class Song(
+data class Camera(
     @Id val id: String? = null,
-    val title: String,
-    val singer: String,
+    val model: String,
+    val brand: String,
     val rating: Int=0,
-    val lyrics: String
+    val image: String,
+    val description: String
 )
