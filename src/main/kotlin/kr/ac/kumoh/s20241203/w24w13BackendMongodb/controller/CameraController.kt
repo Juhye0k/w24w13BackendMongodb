@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.*
 @CrossOrigin(origins = ["https://kaleidoscopic-blini-307c21.netlify.app/"])
 class CameraController(private val service: CameraService) {
 
-    @GetMapping
-    fun getRoot() = mapOf("status" to "success")
 
     //카메라 리스트 전체 조회
     @GetMapping
