@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/songs")
-@CrossOrigin(origins = ["https://wsp2024frontend.netlify.app"])
+@CrossOrigin(origins = ["https://kaleidoscopic-blini-307c21.netlify.app/"])
 class CameraController(private val service: CameraService) {
 
     @GetMapping
