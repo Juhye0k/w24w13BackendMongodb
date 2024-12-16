@@ -9,8 +9,7 @@ class CameraService(private val repository: CameraRepository) {
 
     fun addCamera(camera: Camera):Camera=repository.save(camera)
     fun getAllCameras(): List<Camera> = repository.findAll()
-    fun getCameraById(id: String): Camera?= repository.findById(id).orElse(null)
-    fun getCameraBySinger(model:String): List<Camera> = repository.findByModel(model)
+    fun getCameraByModel(model: String): Camera?= repository.findByModelContainingIgnoreCase(model)
 
     fun updateCamera(id: String, camera: Camera): Camera? {
         val songTarget = repository.findById(id)
@@ -31,6 +30,7 @@ class CameraService(private val repository: CameraRepository) {
 
     fun deleteCamera(id: String): Boolean {
         return if (repository.existsById(id)) {
+            println("삭제")
             repository.deleteById(id)
             true
         } else {

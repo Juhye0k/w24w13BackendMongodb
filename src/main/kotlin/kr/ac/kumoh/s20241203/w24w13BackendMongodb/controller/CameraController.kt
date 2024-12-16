@@ -9,17 +9,15 @@ import org.springframework.web.bind.annotation.*
 @CrossOrigin(origins = ["http://localhost:3000"])
 class CameraController(private val service: CameraService) {
 
-    @PostMapping
-    fun addCamera(@RequestBody camera:Camera):Camera=service.addCamera(camera)
-
+    //카메라 리스트 전체 조회
     @GetMapping
     fun getAllCamera(): List<Camera> = service.getAllCameras()
 
-    @GetMapping("/{id}")
-    fun getCameraById(@PathVariable id: String): Camera?= service.getCameraById(id)
+    @PostMapping
+    fun addCamera(@RequestBody camera:Camera):Camera=service.addCamera(camera)
 
-    @GetMapping("/model/{model}")
-    fun getCameraByModel(@PathVariable model:String): List<Camera> = service.getCameraBySinger(model)
+    @GetMapping("/{model}")
+    fun getCameraById(@PathVariable model: String): Camera?= service.getCameraByModel(model)
 
     @PutMapping("/{id}")
     fun updateCamera(@PathVariable id:String,@RequestBody cameraDetails:Camera):Camera?=service.updateCamera(id,cameraDetails)
@@ -32,3 +30,5 @@ class CameraController(private val service: CameraService) {
             mapOf("status" to "not found")
     }
 }
+
+
